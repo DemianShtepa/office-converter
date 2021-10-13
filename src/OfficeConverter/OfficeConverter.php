@@ -127,7 +127,7 @@ class OfficeConverter
         $oriFile = escapeshellarg($this->file);
         $outputDirectory = escapeshellarg($outputDirectory);
 
-        return "{$this->bin} --headless --convert-to {$outputExtension} {$oriFile} --outdir {$outputDirectory}";
+        return "{$this->bin} -env:UserInstallation=file:///tmp/{$oriFile} --headless --convert-to {$outputExtension} {$oriFile} --outdir {$outputDirectory} && rm -rf /tmp/{$oriFile}";
     }
 
     /**
